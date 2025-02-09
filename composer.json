@@ -1,0 +1,46 @@
+{
+    "name": "cable8mm/stub-template",
+    "description": "The package is not template engine, but you can use like template when you want for making stub file.",
+    "keywords": [
+        "cable8mm",
+        "stub-template"
+    ],
+    "homepage": "https://github.com/cable8mm/stub-template",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Samgu Lee",
+            "email": "cable8mm@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.20",
+        "phpunit/phpunit": "^9.0|^10.0|^11.0"
+    },
+    "suggest": {
+        "laravel/pint": "Provide a easy way to fit coding style"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cable8mm\\StubTemplate\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cable8mm\\StubTemplate\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "lint": "./vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
