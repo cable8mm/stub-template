@@ -1,4 +1,4 @@
-{{ title }}
+{{ title }} - <?php echo date('Y-m-d') ?>
 
 <h1>Home</h1>
 <p>Welcome to the home page, list of colors:</p>
