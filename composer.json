@@ -1,6 +1,6 @@
 {
     "name": "cable8mm/stub-template",
-    "description": "The package is not template engine, but you can use like template when you want for making stub file.",
+    "description": "The package is not a template engine, but you can use it like one to create stub files when needed.",
     "keywords": [
         "cable8mm",
         "stub-template"
@@ -16,7 +16,8 @@
         }
     ],
     "require": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "twig/twig": "^3.0"
     },
     "require-dev": {
         "laravel/pint": "^1.20",
