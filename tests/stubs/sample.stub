@@ -1,0 +1,9 @@
+{{ title }}
+
+<h1>Home</h1>
+<p>Welcome to the home page, list of colors:</p>
+<ul>
+{% for color in colors %}
+    <li>{{ color }}</li>
+{% endfor %}
+</ul>
