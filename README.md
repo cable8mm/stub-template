@@ -45,7 +45,7 @@ $stub = Stub::of('stubs/sample.stub',
 stubs/sample.stub :
 
 ```twig filename="stubs/sample.stub"
-{{ title }}
+{{ title }} - <?php echo date('Y-m-d') ?>
 
 <h1>Home</h1>
 <p>Welcome to the home page, list of colors:</p>
@@ -60,7 +60,7 @@ stubs/sample.stub :
 Then,
 
 ```html
-Home Page
+Home Page - <?php echo date('Y-m-d') ?>
 
 <h1>Home</h1>
 <p>Welcome to the home page, list of colors:</p>
@@ -70,6 +70,8 @@ Home Page
     <li>green</li>
 </ul>
 ```
+
+It make sure that php codes have **NOT** been executed.
 
 ### Testing
 
