@@ -22,6 +22,17 @@ composer require cable8mm/stub-template
 ## Usage
 
 ```php
+$stub = Stub::of(__DIR__.'/stubs/sample.stub',
+  [
+    'title' => 'Home Page',
+    'colors' => ['red', 'blue', 'green'],
+  ]
+)->render()
+```
+
+or
+
+```php
 $stub = Stub::of('stubs/sample.stub',
   [
     'title' => 'Home Page',
@@ -31,13 +42,33 @@ $stub = Stub::of('stubs/sample.stub',
 )->render()
 ```
 
-```php
-$stub = Stub::of(__DIR__.'/stubs/sample.stub',
-  [
-    'title' => 'Home Page',
-    'colors' => ['red', 'blue', 'green'],
-  ]
-)->render()
+stubs/sample.stub :
+
+```twig filename="stubs/sample.stub"
+{{ title }}
+
+<h1>Home</h1>
+<p>Welcome to the home page, list of colors:</p>
+<ul>
+{% for color in colors %}
+    <li>{{ color }}</li>
+{% endfor %}
+</ul>
+
+```
+
+Then,
+
+```html
+Home Page
+
+<h1>Home</h1>
+<p>Welcome to the home page, list of colors:</p>
+<ul>
+    <li>red</li>
+    <li>blue</li>
+    <li>green</li>
+</ul>
 ```
 
 ### Testing
