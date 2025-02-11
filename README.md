@@ -1,10 +1,15 @@
-# Very short description of the package
+# Stub Template
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/cable8mm/stub-template.svg?style=flat-square)](https://packagist.org/packages/cable8mm/stub-template)
-[![Total Downloads](https://img.shields.io/packagist/dt/cable8mm/stub-template.svg?style=flat-square)](https://packagist.org/packages/cable8mm/stub-template)
-![GitHub Actions](https://github.com/cable8mm/stub-template/actions/workflows/main.yml/badge.svg)
+![Coding Style Actions](https://github.com/cable8mm/stub-template/actions/workflows/code-style.yml/badge.svg)
+![Run Tests Actions](https://github.com/cable8mm/stub-template/actions/workflows/run-tests.yml/badge.svg)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/cable8mm/stub-template.svg)](https://packagist.org/packages/cable8mm/stub-template)
+[![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/cable8mm/stub-template/php?logo=PHP&logoColor=white&color=777BB4)](https://packagist.org/packages/cable8mm/stub-template)
+[![Total Downloads](https://img.shields.io/packagist/dt/cable8mm/stub-template.svg)](https://packagist.org/packages/cable8mm/stub-template)
+[![Packagist Stars](https://img.shields.io/packagist/stars/cable8mm/stub-template)](https://github.com/cable8mm/stub-template/stargazers)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+The package is not a template engine, but you can use it like one to create stub files when needed.
+
+It needs to be used with [Twig template syntax](https://twig.symfony.com/doc/3.x/templates.html).
 
 ## Installation
 
@@ -17,7 +22,22 @@ composer require cable8mm/stub-template
 ## Usage
 
 ```php
-// Usage description here
+$stub = Stub::of('stubs/sample.stub',
+  [
+    'title' => 'Home Page',
+    'colors' => ['red', 'blue', 'green'],
+  ],
+  __DIR__
+)->render()
+```
+
+```php
+$stub = Stub::of(__DIR__.'/stubs/sample.stub',
+  [
+    'title' => 'Home Page',
+    'colors' => ['red', 'blue', 'green'],
+  ]
+)->render()
 ```
 
 ### Testing
@@ -36,12 +56,12 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email cable8mm@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email <cable8mm@gmail.com> instead of using the issue tracker.
 
 ## Credits
 
--   [Samgu Lee](https://github.com/cable8mm)
--   [All Contributors](../../contributors)
+- [Samgu Lee](https://github.com/cable8mm)
+- [All Contributors](../../contributors)
 
 ## License
 
