@@ -3,6 +3,8 @@
 namespace Cable8mm\StubTemplate;
 
 use Throwable;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class Stub
 {
@@ -38,9 +40,9 @@ class Stub
      */
     public function render(): string
     {
-        $loader = new \Twig\Loader\FilesystemLoader(dirname($this->file));
+        $loader = new FilesystemLoader(dirname($this->file));
 
-        $twig = new \Twig\Environment($loader, ['strict_variables' => true]);
+        $twig = new Environment($loader, ['strict_variables' => true]);
 
         try {
             $render = $twig->render(basename($this->file), $this->args);
@@ -59,12 +61,18 @@ class Stub
      * @param  string  $path  The template path
      * @return static The new instance
      *
+     * @throws \InvalidArgumentException
+     *
      * @example Stub::of('stubs/sample.stub', [ 'title' => 'Home Page', 'colors' => ['red', 'blue', 'green'], ], __DIR__)
      * @example Stub::of(__DIR__.'/stubs/sample.stub', [ 'title' => 'Home Page', 'colors' => ['red', 'blue', 'green'], ])
      */
     public static function of(string $file, array $args = [], string $path = ''): static
     {
         $file = empty($path) ? realpath($file) : realpath($path.DIRECTORY_SEPARATOR.$file);
+
+        if ($file === false) {
+            throw new \InvalidArgumentException("Template file not found: {$file}");
+        }
 
         return new self($file, $args);
     }
