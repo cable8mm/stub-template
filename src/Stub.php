@@ -61,12 +61,18 @@ class Stub
      * @param  string  $path  The template path
      * @return static The new instance
      *
+     * @throws \InvalidArgumentException
+     *
      * @example Stub::of('stubs/sample.stub', [ 'title' => 'Home Page', 'colors' => ['red', 'blue', 'green'], ], __DIR__)
      * @example Stub::of(__DIR__.'/stubs/sample.stub', [ 'title' => 'Home Page', 'colors' => ['red', 'blue', 'green'], ])
      */
     public static function of(string $file, array $args = [], string $path = ''): static
     {
         $file = empty($path) ? realpath($file) : realpath($path.DIRECTORY_SEPARATOR.$file);
+
+        if ($file === false) {
+            throw new \InvalidArgumentException("Template file not found: {$file}");
+        }
 
         return new self($file, $args);
     }

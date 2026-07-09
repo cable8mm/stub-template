@@ -99,4 +99,17 @@ TWIG;
         $this->assertStringContainsString('<li>red</li>', $body);
         $this->assertStringNotContainsString('<li>blue</li>', $body);
     }
+
+    public function test_expect_exception_with_non_existent_file(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Template file not found');
+
+        Stub::of('non_existent.stub',
+            [
+                'title' => 'Test',
+            ],
+            __DIR__
+        )->render();
+    }
 }
