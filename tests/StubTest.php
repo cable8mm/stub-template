@@ -4,6 +4,7 @@ namespace Cable8mm\StubTemplate\Tests;
 
 use Cable8mm\StubTemplate\Stub;
 use PHPUnit\Framework\TestCase;
+use Twig\Error\RuntimeError;
 
 final class StubTest extends TestCase
 {
@@ -103,7 +104,7 @@ TWIG;
     public function test_expect_exception_with_non_existent_file(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Template file not found');
+        $this->expectExceptionMessage('Template file not found: '.__DIR__.'/non_existent.stub');
 
         Stub::of('non_existent.stub',
             [
@@ -111,5 +112,20 @@ TWIG;
             ],
             __DIR__
         )->render();
+    }
+
+    public function test_render_exception_preserves_original_exception(): void
+    {
+        $template = tempnam(sys_get_temp_dir(), 'stub-template-');
+        file_put_contents($template, '{{ missing.value }}');
+
+        try {
+            Stub::of($template)->render();
+            $this->fail('Expected rendering to throw an InvalidArgumentException.');
+        } catch (\InvalidArgumentException $exception) {
+            $this->assertInstanceOf(RuntimeError::class, $exception->getPrevious());
+        } finally {
+            unlink($template);
+        }
     }
 }

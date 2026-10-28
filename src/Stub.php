@@ -47,7 +47,7 @@ class Stub
         try {
             $render = $twig->render(basename($this->file), $this->args);
         } catch (Throwable $e) {
-            throw new \InvalidArgumentException($e->getMessage());
+            throw new \InvalidArgumentException($e->getMessage(), (int) $e->getCode(), $e);
         }
 
         return $render;
@@ -68,12 +68,13 @@ class Stub
      */
     public static function of(string $file, array $args = [], string $path = ''): static
     {
-        $file = empty($path) ? realpath($file) : realpath($path.DIRECTORY_SEPARATOR.$file);
+        $templatePath = empty($path) ? $file : $path.DIRECTORY_SEPARATOR.$file;
+        $resolvedFile = realpath($templatePath);
 
-        if ($file === false) {
-            throw new \InvalidArgumentException("Template file not found: {$file}");
+        if ($resolvedFile === false) {
+            throw new \InvalidArgumentException("Template file not found: {$templatePath}");
         }
 
-        return new self($file, $args);
+        return new self($resolvedFile, $args);
     }
 }
