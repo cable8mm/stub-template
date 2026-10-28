@@ -10,7 +10,7 @@ final class StubTest extends TestCase
 {
     public function test_stub_with_dir(): void
     {
-        $body = Stub::of('stubs/sample.stub',
+        $body = Stub::of('Fixtures/sample.stub',
             [
                 'title' => 'Home Page',
                 'colors' => ['red', 'blue', 'green'],
@@ -23,7 +23,7 @@ final class StubTest extends TestCase
 
     public function test_stub_without_dir(): void
     {
-        $body = Stub::of(__DIR__.'/stubs/sample.stub',
+        $body = Stub::of(__DIR__.'/Fixtures/sample.stub',
             [
                 'title' => 'Home Page',
                 'colors' => ['red', 'blue', 'green'],
@@ -37,14 +37,14 @@ final class StubTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Stub::of(__DIR__.'/stubs/sample.stub',
+        Stub::of(__DIR__.'/Fixtures/sample.stub',
             []
         )->render();
     }
 
     public function test_php_code_is_not_executed(): void
     {
-        $body = Stub::of('stubs/sample.stub',
+        $body = Stub::of('Fixtures/sample.stub',
             [
                 'title' => 'Home Page',
                 'colors' => ['red', 'blue', 'green'],
@@ -63,7 +63,7 @@ final class StubTest extends TestCase
 
     public function test_full_render_result(): void
     {
-        $body = Stub::of('stubs/sample.stub',
+        $body = Stub::of('Fixtures/sample.stub',
             [
                 'title' => 'Home Page',
                 'colors' => ['red', 'blue', 'green'],
@@ -89,7 +89,7 @@ TWIG;
 
     public function test_twig_loop_works_correctly(): void
     {
-        $body = Stub::of('stubs/sample.stub',
+        $body = Stub::of('Fixtures/sample.stub',
             [
                 'title' => 'Test',
                 'colors' => ['red'],
