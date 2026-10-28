@@ -1,5 +1,15 @@
 # Release Notes
 
+## v1.0.2 - 2026-10-28
+
+### What's Changed
+
+* Preserve stub rendering error context by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/stub-template/pull/5
+* Explain stub template purpose in README by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/stub-template/pull/6
+* Move test template into Fixtures directory by [@cable8mm](https://github.com/cable8mm) in https://github.com/cable8mm/stub-template/pull/7
+
+**Full Changelog**: https://github.com/cable8mm/stub-template/compare/v1.0.1...v1.0.2
+
 ## v1.0.1 - 2026-07-09
 
 ### What's Changed
